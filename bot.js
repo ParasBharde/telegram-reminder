@@ -492,3 +492,31 @@ process.on('unhandledRejection', (error) => {
 
 console.log('✅ Bot is running and listening for commands...');
 console.log(`📅 Current Day: ${getCurrentDay()}/90`);
+
+// ============================================
+// HTTP SERVER FOR RENDER.COM (Keep-Alive)
+// ============================================
+const http = require('http');
+const PORT = process.env.PORT || 3000;
+
+const server = http.createServer((req, res) => {
+  // Health check endpoint
+  if (req.url === '/' || req.url === '/health') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      status: 'ok',
+      bot: 'DSA Reminder Bot',
+      day: `${getCurrentDay()}/90`,
+      uptime: process.uptime(),
+      timestamp: new Date().toISOString()
+    }));
+  } else {
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('Not Found');
+  }
+});
+
+server.listen(PORT, () => {
+  console.log(`🌐 HTTP Server running on port ${PORT}`);
+  console.log(`📡 Health check: http://localhost:${PORT}/health`);
+});
