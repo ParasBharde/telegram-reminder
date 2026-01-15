@@ -464,16 +464,16 @@ const dsaSchedule = {
 
 // Calculate current day based on start date
 function getCurrentDay() {
-  const startDate = new Date('2025-01-16'); // CHANGE THIS to your actual start date
+  const startDate = new Date('2026-01-15'); // START DATE - Update this to your actual start date
   const today = new Date();
-  
-  // Set to start of day for accurate comparison
-  startDate.setHours(0, 0, 0, 0);
-  today.setHours(0, 0, 0, 0);
-  
-  const diffTime = today - startDate;
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
-  
+
+  // Set to start of day for accurate comparison (using UTC to avoid timezone issues)
+  const startUTC = Date.UTC(startDate.getUTCFullYear(), startDate.getUTCMonth(), startDate.getUTCDate());
+  const todayUTC = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+
+  const diffTime = todayUTC - startUTC;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
   // Return day number (1-90), cap at 90
   return Math.max(1, Math.min(diffDays, 90));
 }
