@@ -1,0 +1,25 @@
+{
+  "name": "dsa-reminder-bot",
+  "version": "1.0.0",
+  "description": "Daily DSA problem reminder bot for Telegram",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js",
+    "test": "node test.js"
+  },
+  "keywords": ["telegram", "bot", "dsa", "leetcode", "reminder"],
+  "author": "Paras",
+  "license": "MIT",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.64.0",
+    "node-cron": "^3.0.3",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
