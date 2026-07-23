@@ -46,7 +46,7 @@ npm start
 - Week 11-12: Company-Specific + Mock Interviews
 
 ## Author
-Built by Paras for crushing DSA interviews! 🚀
+Built for crushing DSA interviews! 🚀
 ```
 
 ---
